@@ -31,6 +31,7 @@ public class Movie implements Serializable {
 	@Column(name = "movie_year")
 	private Integer year;
 	private String imgUrl;
+	@Column(length = 1024)
 	private String synopsis;
 
 	@OneToMany(mappedBy = "movie")
