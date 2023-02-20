@@ -1,15 +1,19 @@
 package com.devsuperior.movieflix.dto;
 
+import javax.validation.constraints.NotBlank;
+
 import com.devsuperior.movieflix.entities.Review;
 
 public class ReviewDTO {
 	private Long id;
+	@NotBlank
 	private String text;
 	private Long movieId;
 	private UserDTO user;
-	
-	public ReviewDTO() {}
-	
+
+	public ReviewDTO() {
+	}
+
 	public ReviewDTO(Long id, String text) {
 		this.id = id;
 		this.text = text;
@@ -18,6 +22,8 @@ public class ReviewDTO {
 	public ReviewDTO(Review entity) {
 		this.id = entity.getId();
 		this.text = entity.getText();
+		this.movieId = entity.getMovie().getId();
+		this.user = new UserDTO(entity.getUser());
 	}
 
 	public String getText() {
@@ -51,8 +57,5 @@ public class ReviewDTO {
 	public void setUser(UserDTO user) {
 		this.user = user;
 	}
-	
-	
-	
-	
+
 }
